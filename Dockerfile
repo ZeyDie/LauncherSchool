@@ -7,9 +7,6 @@ FROM openjdk:8
 
 MAINTAINER Pterodactyl Software, <support@pterodactyl.io>
 
-RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig \
-    && adduser --disabled-password --home /home/container container
-
 USER container
 ENV  USER=container HOME=/home/container
 
