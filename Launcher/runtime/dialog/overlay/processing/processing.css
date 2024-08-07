@@ -4,8 +4,19 @@
 #overlay > #description {
     -fx-font-size: 12pt;
     -fx-wrap-text: true;
+    -fx-text-fill: white;
 }
 
 #overlay > #description.error {
     -fx-text-fill: red;
+}
+
+#overlay {
+    -fx-opacity: 0.0;
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+}
+
+#layout > #dim > #overlay {
+    -fx-opacity: 0.0;
+    -fx-background-color: rgba(0, 0, 0, 0.8);
 }

@@ -31,6 +31,7 @@ var LauncherApp = Java.extend(JSApplication, {
         // Set scene
         scene = new javafx.scene.Scene(rootPane);
         stage.setScene(scene);
+        stage.initStyle(javafx.stage.StageStyle.UNDECORATED);
 
         // Center and show stage
         stage.sizeToScene();

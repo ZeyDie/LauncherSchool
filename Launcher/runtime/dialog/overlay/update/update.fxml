@@ -5,13 +5,13 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane xmlns:fx="http://javafx.com/fxml/1" fx:id="overlay" prefWidth="500.0" prefHeight="250.0">
+<Pane fx:id="overlay" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@update.css" />
     </stylesheets>
 
     <!-- Update controls -->
-    <Label fx:id="utitle" layoutX="10.0" layoutY="10.0" prefWidth="480.0" text="Обновление" />
-    <Label fx:id="description" layoutX="10.0" layoutY="50.0" prefWidth="480.0" prefHeight="165.0" text="..." />
-    <ProgressBar fx:id="progress" layoutX="10.0" layoutY="220.0" prefWidth="480.0" prefHeight="20.0" />
+    <Label fx:id="utitle" layoutY="40.0" prefHeight="40.0" prefWidth="300.0" text="Обновление" />
+    <Label fx:id="description" layoutX="10.0" layoutY="90.0" prefHeight="150.0" prefWidth="280.0" />
+    <ProgressBar fx:id="progress" layoutX="10.0" layoutY="265.0" prefHeight="20.0" prefWidth="280.0" />
 </Pane>

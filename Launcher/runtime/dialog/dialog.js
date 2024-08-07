@@ -1,5 +1,5 @@
 // Dialog nodes
-var rootPane, news, authPane, dimPane;
+var rootPane, /*news,*/ authPane, dimPane;
 var loginField, passwordField, savePasswordBox, profilesBox;
 var movePoint = null; // Point2D
 
@@ -8,12 +8,13 @@ var pingers = {};
 
 function initDialog() {
     // Lookup news WebView
-    news = rootPane.lookup("#news");
+    /*news = rootPane.lookup("#news");
     var newsEngine = news.getEngine();
     newsEngine.setUserDataDirectory(dir.resolve("webview").toFile());
-    newsEngine.load(config.newsURL);
+    newsEngine.load(config.newsURL);*/
 
     // Lookup auth pane and dim
+    initHeaderPane(rootPane.lookup("#headerPane"));
     initAuthPane(rootPane.lookup("#authPane"));
     dimPane = rootPane.lookup("#dim");
 
@@ -25,6 +26,12 @@ function initDialog() {
 
     // Verify launcher & make request
     verifyLauncher();
+}
+
+function initHeaderPane(pane) {
+    pane.lookup("#goSettings").setOnAction(goSettings);
+    pane.lookup("#goHide").setOnAction(goHide);
+    pane.lookup("#goClose").setOnAction(goClose);
 }
 
 function initAuthPane(pane) {
@@ -55,13 +62,12 @@ function initAuthPane(pane) {
     savePasswordBox.setSelected(settings.login === null || settings.rsaPassword !== null);
 
     // Lookup hyperlink text and actions
-    var link = pane.lookup("#link");
+    /*var link = pane.lookup("#link");
     link.setText(config.linkText);
-    link.setOnAction(function(event) app.getHostServices().showDocument(config.linkURL.toURI()));
+    link.setOnAction(function(event) app.getHostServices().showDocument(config.linkURL.toURI()));*/
 
     // Lookup action buttons
     pane.lookup("#goAuth").setOnAction(goAuth);
-    pane.lookup("#goSettings").setOnAction(goSettings);
 }
 
 function initOffline() {
@@ -80,8 +86,8 @@ function initOffline() {
     passwordField.setText("");
 
     // Switch news view to offline page
-    var offlineURL = Launcher.getResourceURL("dialog/offline/offline.html");
-    news.getEngine().load(offlineURL.toString());
+    /*var offlineURL = Launcher.getResourceURL("dialog/offline/offline.html");
+    news.getEngine().load(offlineURL.toString());*/
 }
 
 /* ======== Handler functions ======== */
@@ -132,6 +138,24 @@ function goSettings(event) {
 
     // Show settings overlay
     overlay.show(settings.overlay, null);
+}
+
+function goHide(event) {
+    // Verify there's no other overlays
+    if (overlay.current !== null) {
+        return;
+    }
+
+    scene.hide();
+}
+
+function goClose(event) {
+    // Verify there's no other overlays
+    if (overlay.current !== null) {
+        return;
+    }
+
+    stage.close();
 }
 
 /* ======== Processing functions ======== */
@@ -299,7 +323,7 @@ var overlay = {
 
     show: function(newOverlay, onFinished) {
         // Freeze root pane
-        news.setDisable(true);
+        //news.setDisable(true);
         authPane.setDisable(true);
         overlay.current = newOverlay;
 
@@ -328,7 +352,7 @@ var overlay = {
                 dimPane.setVisible(false);
 
                 // Unfreeze root pane
-                news.setDisable(false);
+                //news.setDisable(false);
                 authPane.setDisable(false);
                 rootPane.requestFocus();
 

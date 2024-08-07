@@ -2,12 +2,14 @@
 
 /* Header styles */
 #layout {
+    -fx-background-radius: 10px;
     -fx-background-color: white;
+    -fx-background-image: url(images/background.png);
 }
 
 /* Auth pane styles */
 #layout > #authPane > #password.hasSaved {
-    -fx-prompt-text-fill: black;
+    -fx-prompt-text-fill: white;
 }
 
 #layout > #authPane > #profiles > .arrow-button {
@@ -23,9 +25,28 @@
     -fx-padding: 5px 5px 5px 8px;
 }
 
-#layout > #authPane > #goSettings {
+#layout > #authPane > #goLogo,
+#layout > #headerPane > #goSettings,
+#layout > #headerPane > #goHide,
+#layout > #headerPane > #goClose {
     -fx-padding: 0;
-    -fx-graphic: url(settings.png);
+    -fx-background-color: transparent;
+}
+
+#layout > #authPane > #goLogo {
+    -fx-graphic: url(images/logo.png);
+}
+
+#layout > #headerPane > #goSettings {
+    -fx-graphic: url(images/panel/settings.png);
+}
+
+#layout > #headerPane > #goHide {
+    -fx-graphic: url(images/panel/hide.png);
+}
+
+#layout > #headerPane > #goClose {
+    -fx-graphic: url(images/panel/close.png);
 }
 
 /* Overlay styles */
@@ -36,6 +57,5 @@
 
 #layout > #dim > #overlay {
     -fx-opacity: 0.0;
-    -fx-background-color: white;
-    -fx-background-radius: 5px;
+    -fx-background-color: rgba(255, 255, 255, 1);
 }

@@ -38,7 +38,7 @@ var update = {
             "Загружено (Файл): %.2f / %.2f MiB.%n" + // File downloaded line
             "Загружено (Всего): %.2f / %.2f MiB.%n" + // Total downloaded line
             "%n" +
-            "Средняя скорость: %.1f Kbps%n" + // Speed line
+            "Средняя скорость: %.1f Кб/с%n" + // Speed line
             "Примерно осталось: %d:%02d:%02d%n", // Estimated line
 
             // Formatting
