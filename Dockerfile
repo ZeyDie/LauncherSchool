@@ -10,8 +10,8 @@ MAINTAINER Danil ZeyDie Zalov, <zeydie.dev@gmail.com>
 USER container
 ENV  USER=container HOME=/home/container
 
-RUN apt-get install lib32z1
-RUN apt-get install glibc.i686
+#RUN apt-get install lib32z1
+#RUN apt-get install glibc.i686
 
 WORKDIR /home/container
 
