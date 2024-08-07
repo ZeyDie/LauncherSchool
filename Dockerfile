@@ -10,6 +10,9 @@ MAINTAINER Danil ZeyDie Zalov, <zeydie.dev@gmail.com>
 USER container
 ENV  USER=container HOME=/home/container
 
-RUN chmod +X libraries/launch4j && apt-get install lib32z1 && apt-get install glibc.i686
+RUN apt-get install lib32z1
+RUN apt-get install glibc.i686
 
 WORKDIR /home/container
+
+CMD [ "chmod +X libraries/launch4j"]
