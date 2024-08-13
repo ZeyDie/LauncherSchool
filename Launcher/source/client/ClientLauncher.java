@@ -104,7 +104,8 @@ public final class ClientLauncher
         args.add(MAGICAL_INTEL_OPTION);
         if (params.ram > 0 && params.ram <= JVMHelper.RAM)
         {
-            args.add("-Xms" + params.ram + 'M');
+            //-Xmx128M для запуска на посудомойках
+            args.add("-Xms128M");
             args.add("-Xmx" + params.ram + 'M');
         }
         args.add(jvmProperty(LogHelper.DEBUG_PROPERTY, Boolean.toString(LogHelper.isDebugEnabled())));
@@ -120,7 +121,18 @@ public final class ClientLauncher
         }
 
         // A fucking shitty fix
-        args.add(jvmProperty(JVMHelper.JAVA_LIBRARY_PATH, params.clientDir.resolve(NATIVES_DIR).toString()));
+        Path nativesRootDir = params.clientDir.resolve(NATIVES_DIR);
+        Path nativesOsArchDir = nativesRootDir.resolve(JVMHelper.OS_TYPE.name).resolve(JVMHelper.ARCH_TYPE.name);
+        String nativesDir;
+
+        if (!Files.isDirectory(nativesOsArchDir)) {
+            nativesDir = nativesRootDir.toString();
+        } else {
+            nativesDir = nativesOsArchDir.toString();
+        }
+
+        LogHelper.debug("Natives folder: " + nativesDir);
+        args.add(jvmProperty(JVMHelper.JAVA_LIBRARY_PATH, nativesDir));
 
         // Add classpath and main class
         Collections.addAll(args, profile.object.getJvmArgs());
