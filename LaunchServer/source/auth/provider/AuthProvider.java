@@ -35,6 +35,9 @@ public abstract class AuthProvider extends ConfigObject implements AutoCloseable
         registerProvider("postgresql", PostgreSQLAuthProvider::new);
         registerProvider("postgresql-bcrypt", PostgreSQLBcryptAuthProvider::new);
         registerProvider("sqlite", SQLiteAuthProvider::new);
+        //TODO ZeyCodeStart
+        registerProvider("mysql-8-bcrypt-full", MySQL8BcryptFullAuthProvider::new);
+        //TODO ZeyCodeEnd
 
         // Authlib Providers
         registerProvider("authlib", AuthlibAuthProvider::new);
